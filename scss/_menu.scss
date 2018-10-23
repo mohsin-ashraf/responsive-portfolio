@@ -13,7 +13,7 @@
     margin: 0 0 5px 0;
     background-color: #fff;
     @include easeOut;
-  }
+  }//btn-line class
 
   // Rotate Into X With Menu Lines
   
@@ -24,16 +24,105 @@
       &:nth-child(1){
         transform: rotate(45deg) translate(5px, 5px);
         background-color: red;
-      }
+      }//first child
       // Line two will hide
       &:nth-child(2){
       opacity: 0;
-      }
+      }//second child
       // Line three will rotate
       &:nth-child(3){
         transform: rotate(-45deg) translate(7px, -7px); 
         background-color: red;
-      }
+      }//third child
+    }//btn-line class
+  }//close class
+}
+
+// Menu Overlay
+.menu{
+  position: fixed;
+  top:0;
+  width:100%;
+  opacity: 0.9;
+  visibility: hidden;
+
+  &.show{ 
+    visibility: visible;
+  }//show class
+  &-branding,&-nav{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float:left;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+  }//&-nav &-branding class
+
+  &-nav{
+    margin: 0;
+    padding:0;
+    background: darken($primary-color,5);
+    list-style: none;
+    transform: translate3d(0,-100%,0);
+    @include easeOut;
+
+    &.show{
+      transform: translate3d(0,0,0);
+    }//show class
+  }//&-nav class
+
+  &-branding{
+    background: $primary-color;
+    @include easeOut;
+    transform: translate3d(0,100%,0);
+    &.show{
+      transform: translate3d(0,0,0);
+    }//show class
+
+    .portrait{
+      width: 250px;
+      height: 250px;
+      background: url('../imgs/portrait.jpeg');
+      background-position-x: -5rem;
+      border-radius: 50%;
+      border: solid 3px $secondary-color;
+    }//portrait class
+  }//&-branding class
+
+  .nav-item{
+    transform: translate3d(600px , 0 ,0);
+    @include easeOut;
+    &.show{
+      transform: translate3d(0,0,0);
+    }//show class
+    &.current > a{
+      color:$secondary-color;
+    }// current class
+  }//nav-item class
+
+  .nav-link{
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: 300px;
+    color: #fff;
+    text-decoration: none;
+    @include easeOut;
+
+    &:hover{
+      color:$secondary-color;
     }
+  }
+}//menu class
+
+
+// Delay each nav item slide by 0.1s
+@for $x from 1 through 4 {
+  .nav-item:nth-child(#{$x}){
+    transition-delay: $x*0.1s;
   }
 }
