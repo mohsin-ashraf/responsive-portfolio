@@ -1,5 +1,5 @@
 // Variables
-$primary-color:#444;
+$primary-color:#aaa;
 $secondary-color:#eece1a;
 $show-home-image:true;
 $home-image:url(../imgs/background.jpg);
@@ -18,7 +18,7 @@ $background-opacity:0.5;
 body{
   @include background;
   background-color: $primary-color;
-  color:#fff;
+  color:set-text-color($primary-color);
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -61,7 +61,7 @@ header{
 }
 main {
   padding:4rem;
-  height: 100%;
+  min-height: calc(100vh - 60px);
   text-align: center;
   
   .icons{
@@ -84,3 +84,51 @@ main {
     }//h1 tag
   }//home id
 }// main tag
+
+.about-info{
+  text-align: left;
+  display: grid;
+  grid-template-areas: 
+    'bioimage bio bio'
+    'job1 job2 job3';
+    grid-template-columns: 1fr 1fr 1fr;
+}//about-info class
+
+.bio-image{
+  grid-area: bioimage;
+  margin: auto;
+  border-radius: 40%;
+  border:$secondary-color solid 3px;
+}
+.bio{
+  grid-area: bio;
+  padding-left:15px;
+  text-align: left; 
+}
+.job{
+  padding: 10px;
+  background: lighten($primary-color,5);
+  border-bottom: $secondary-color 5px solid;
+  margin: 5px;
+}
+
+.job-1{
+  grid-area: job1;
+}
+.job-2{
+  grid-area: job2;
+}
+.job-3{
+  grid-area: job3;
+}
+
+#main-footer{
+  text-align: center;
+  padding: 25px;
+  background-color: #000;
+  color:white;
+  max-height: 60px;
+}
+
+
+@import 'mobile';
