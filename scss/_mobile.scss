@@ -1,9 +1,13 @@
 @include mediaXL{
-
+  .projects{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 @include mediaLg{
-
+  .projects{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 @include mediaMd{
@@ -52,6 +56,10 @@
     'job3';
     grid-template-columns: 1fr;
   }
+
+  .projects{
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @include mediaSm{
@@ -59,4 +67,7 @@
     margin-top: 10vh;
   }
 
+  .projects{
+    grid-template-columns: 1fr;
+  }
 }
